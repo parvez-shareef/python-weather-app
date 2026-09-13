@@ -2,6 +2,25 @@
 A Python command-line application that provides real-time weather updates and a 5-day forecast using the OpenWeather API.
 # Weather CLI Application
 
+## Web UI (Flask)
+
+Alongside the CLI lives a modern, self-contained browser frontend served by
+Flask. It reuses the same `weather_service.py` backend and shares `history.txt`
+with the CLI, so the API key stays server-side.
+
+**Run it:**
+
+```bash
+python web_app.py
+```
+
+Then open **http://127.0.0.1:5000** in your browser.
+
+The UI offers search with city autocomplete, live current conditions over an
+animated, condition-reactive sky, a five-day outlook with high/low temperatures,
+a daylight arc, a °C/°F toggle, and a clickable search-history panel — all in a
+single dependency-free HTML file (`templates/index.html`).
+
 ## Overview
 
 Weather CLI Application is a command-line application developed in Python that provides real-time weather information and a 5-day weather forecast using the OpenWeather API. The application features a menu-driven interface, maintains a searchable history of successful weather lookups, and includes robust error handling for network and invalid input scenarios.
@@ -47,14 +66,17 @@ This project was built to strengthen practical knowledge of working with REST AP
 ```text
 weather-app/
 │
-├── main.py
-├── weather_service.py
-├── config.py
-├── history.txt
+├── main.py              # CLI entry point
+├── web_app.py           # Web UI entry point (Flask)
+├── weather_service.py   # OpenWeather API + shared history logic
+├── config.py            # loads API_KEY from .env
+├── templates/
+│   └── index.html       # the web UI (self-contained, no build step)
+├── history.txt          # shared search history (CLI + web)
 ├── requirements.txt
 ├── README.md
 ├── .gitignore
-└── .env
+└── .env                 # API_KEY=your_openweather_key
 ```
 
 ---
@@ -111,14 +133,17 @@ This project was built to strengthen practical knowledge of working with REST AP
 ```text
 weather-app/
 │
-├── main.py
-├── weather_service.py
-├── config.py
-├── history.txt
+├── main.py              # CLI entry point
+├── web_app.py           # Web UI entry point (Flask)
+├── weather_service.py   # OpenWeather API + shared history logic
+├── config.py            # loads API_KEY from .env
+├── templates/
+│   └── index.html       # the web UI (self-contained, no build step)
+├── history.txt          # shared search history (CLI + web)
 ├── requirements.txt
 ├── README.md
 ├── .gitignore
-└── .env
+└── .env                 # API_KEY=your_openweather_key
 ```
 
 ---
